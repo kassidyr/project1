@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url(./images/giftbg.jpeg);
+    background-size: cover;
+    color:aliceblue;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+   
+}
+
+section, .content  {
+    text-align: center;
+    padding: 15px;
+    
+}
+
+header {
+    background-color: black;
+    padding: 20px 40px;
+}
+
+header h1 {
+    display: inline;
+    margin: 0;
+}
+
+header nav {
+    float: right;
+    margin: 7px 0;
+}
+
+header nav ul {
+    list-style-type: none;
+}
+
+header nav ul li {
+    display: inline;
+    font-size: 22px;
+}
+
+header nav ul li a {
+    margin: 0 30px;
+    font-weight: lighter;
+    text-decoration: none;
+    color: aliceblue;
+}
+
+p {
+    font-size: 23px;
+    line-height: 1.6;
+    padding: 15px;
+    font-weight: lighter;
+    
+}
+
+a:visited {
+    color: aliceblue;
+}
+
+a:hover {
+    color: rgb(54, 189, 194);
+}
+
+h1 {
+    font-size: 40px;
+    color:rgb(54, 189, 194);
+}
+
+h1 span {
+    color: aliceblue;
+}
+
+h2 {
+    font-size: 30px;
+    color: rgb(54, 189, 194);
+}
+
+.form-row label {
+    font-size: 23px;
+    font-weight: lighter;
+}
+
+.form-row input {
+    font-size: 18px;
+}
