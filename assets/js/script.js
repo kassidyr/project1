@@ -38,23 +38,25 @@ var submitHandler = function(event) {
 };
 
 var displayFacts = function(data, birthMonth, birthDay) {
-    if (data.length === 0) {
+    if (data.events.length === 0) {
         factContainer.textContent = "No facts for this date";
         return;
     }
 
     factContainer.textContent = "";
     dateSearch.textContent = birthMonth + "/" + birthDay;
-    console.log(data);
-    console.log(birthMonth, birthDay);
+    var eventsData = data.events;
+    console.log(eventsData);
+    console.log(birthMonth + "/" + birthDay);
 
-    for (var i = 0; i < data.length; i++) {
-        var dateFacts = data[i].year + ":" + data[i].year.description;
+    for (var i = 0; i < eventsData.length; i++) {
+        var dateFacts = eventsData[i].year + ": " + eventsData[i].description;
         var factDiv = document.createElement("div");
         var factTitle = document.createElement("span");
         factTitle.textContent = dateFacts;
         factDiv.appendChild(factTitle);
         factContainer.appendChild(factDiv);
+        
     }
 }
 
