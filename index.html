@@ -1,13 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
 <head>
+    <title>Horoscopes API - Daily Birthday Facts</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
+    <header class="header">
+        <h1>Astrology<span class="astrology">API</span></h1>
+        <nav>
+            <ul>
+                <li>
+                    <a href="#zodiac-signs">Zodiac Signs</a>
+                </li>
+                <li>
+                    <a href="#what-it-means">What Your Zodiac Sign Means</a>
+                </li>
+                <li>
+                    <a href="#sharing-zodiac">Other People May Share Your Sign</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <section class="content">
+        <article class="zodiac-signs">
+            
+            <h2>Zodiac Signs</h2>
+            <p>
+                The zodiac is a diagram used by astrologers to represent the positions of the planets and stars.<br>
+                It is divided into twelve sections, each of which has its own name and symbol.<br>
+                The zodiac is used to try to calculate the influence of the planets, especially on someone's life.<br>
+            </p>
+        </article>
+        <article class="what-it-means">
+            
+            <h2>What It Means</h2>
+            <p>
+                Despite the nuances, the most fundamental principle of astrology centers on the 12 familiar star signs of the zodiac.<br>
+                Over the centuries, each sign has developed its own associations — including myths, animals, and colors — and its own characteristics.<br>
+                Every sign boasts an individual approach to life, complete with dynamic strengths and frustrating weaknesses.<br>
+            </p>
+        </article>
+        <article class="sharing-zodiac">
+            
+            <h2>Sharing A Zodiac Sign</h2>
+            <p>
+                Zodiac signs can be extremely informative and insightful into someone's best and worst traits, and this can be extra valuable when you're dating someone with the same zodiac sign.<br>
+                Certain signs are super compatible, while others are majorly combustible.<br>
+                That's not to say that the relationship is guaranteed to either succeed or fail, but learning about how sign-on-sign dynamics play out can be very helpful as you navigate a new relationship or friendship.<br>
+            </p>
+        </article>
+    </section>
+    <section>
+        <form id="submit-form" action="#" class="ws-validate">
+            <div class="form-row hide-inputbtns">
+                <label for="birth-month">Birth month</label>
+                <select id="month" name="month">
+                    <option></option>
+                    <option value="1">January</option>
+                    <option value="2">February</option>
+                    <option value="3">March</option>
+                    <option value="4">April</option>
+                    <option value="5">May</option>
+                    <option value="6">June</option>
+                    <option value="7">July</option>
+                    <option value="8">August</option>
+                    <option value="9">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                 </select>
+
+                 <label for="birth-month">Birth day</label>
+                 <select id="day" name="day">
+                    <option></option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                    <option value="31">31</option>
+                    
+                    
+                 </select>
+            </div>
+            <div class="form-row">
+                <input type="submit" />
+            </div>
+        </form>
+    </section>
+
+    <section>
+        <article class="results">
+            
+            <h3 class="-fun-facts">These are events in history from <span id="date-search" class="search-date"></span></h3>
+            <div id="results-container" class="list-group"></div> 
+        </article>
+    </section>
     <script src="assets/js/script.js"></script>
 </body>
 </html>
