@@ -3,6 +3,8 @@ var monthInput = document.querySelector("#month");
 var dayInput = document.querySelector("#day");
 var factContainer = document.querySelector("#results-container");
 var dateSearch = document.querySelector("#date-search");
+var activityContainer = document.querySelector("#activity-container");
+var activitySpan = document.querySelector("#activity-span");
 
 
 
@@ -10,17 +12,21 @@ var getFacts = function(birthMonth, birthDay) {
 
     var funFacts = "https://byabbe.se/on-this-day/" + birthMonth + "/" + birthDay + "/events.json"
 
-    fetch(funFacts).then(function(response) {
-        if (response.ok) {
-            response.json().then(function(data) {
-            displayFacts(data, birthMonth, birthDay)
-                });
-        } else {
-            alert("Not a valid date");
-        }
+    $.get(funFacts, function( data ) {
+        $( ".result" ).html( data );
+        displayFacts(data, birthMonth, birthDay)
+        
     })
-    
-};
+}
+
+var getActivity = function() {
+
+    $.get( "https://www.boredapi.com/api/activity", function( data ) {
+        $( ".result" ).html( data );
+        console.log(data);
+      });
+    };
+  
 
 var submitHandler = function(event) {
     event.preventDefault();
@@ -33,7 +39,8 @@ var submitHandler = function(event) {
         monthInput.value = "";
         dayInput.value = "";
     } else {
-        alert("Please enter a date")
+        factContainer.textContent = "Please enter a valid date";
+        return;
     }
 };
 
@@ -63,4 +70,4 @@ var displayFacts = function(data, birthMonth, birthDay) {
 
 
 userForm.addEventListener("submit", submitHandler);
-
+getActivity();
