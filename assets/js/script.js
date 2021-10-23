@@ -19,10 +19,11 @@ var getFacts = function(birthMonth, birthDay) {
     })
 }
 
-var getActivity = function() {
+var getQuote = function() {
 
-    $.get( "https://www.boredapi.com/api/activity", function( data ) {
+    $.get( "https://goquotes-api.herokuapp.com/api/v1/random?count=1", function( data ) {
         $( ".result" ).html( data );
+        displayQuotes(quotes);
         console.log(data);
       });
     };
@@ -44,9 +45,32 @@ var submitHandler = function(event) {
     }
 };
 
-var displayFacts = function(data, birthMonth, birthDay) {
-    if (data.events.length === 0) {
+var displayFacts = function(facts, birthMonth, birthDay) {
+    if (facts.events.length === 0) {
         factContainer.textContent = "No facts for this date";
+        return;
+    }
+
+    factContainer.textContent = "";
+    dateSearch.textContent = " Below are events in history from " + birthMonth + "/" + birthDay;
+    var eventsData = facts.events;
+    console.log(eventsData);
+    console.log(birthMonth + "/" + birthDay);
+
+    for (var i = 0; i < eventsData.length; i++) {
+        var dateFacts = eventsData[i].year + ": " + eventsData[i].description;
+        var factDiv = document.createElement("div");
+        var factTitle = document.createElement("span");
+        factTitle.textContent = dateFacts;
+        factDiv.appendChild(factTitle);
+        factContainer.appendChild(factDiv);
+        
+    }
+};
+
+var displayQuote = function(quote) {
+    if (quote.quotes.length === 0) {
+        factContainer.textContent = "Quote not available";
         return;
     }
 
@@ -70,4 +94,4 @@ var displayFacts = function(data, birthMonth, birthDay) {
 
 
 userForm.addEventListener("submit", submitHandler);
-getActivity();
+getQuote();
