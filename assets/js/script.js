@@ -44,7 +44,7 @@ var displayFacts = function(data, birthMonth, birthDay) {
     }
 
     factContainer.textContent = "";
-    dateSearch.textContent = birthMonth + "/" + birthDay;
+    dateSearch.textContent = " Below are events in history from " + birthMonth + "/" + birthDay;
     var eventsData = data.events;
     console.log(eventsData);
     console.log(birthMonth + "/" + birthDay);

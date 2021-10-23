@@ -12,7 +12,7 @@
 <body>
     <header class="header">
         <h1>Astrology<span class="astrology">API</span></h1>
-        <div>
+        <nav>
             <ul>
                 <li>
                     <a href="#zodiac-signs">Zodiac Signs</a>
@@ -24,7 +24,7 @@
                     <a href="#sharing-zodiac">Other People May Share Your Sign</a>
                 </li>
             </ul>
-        </div>
+        </nav>
     </header>
     <section class="content">
         <article class="zodiac-signs">
@@ -108,7 +108,7 @@
                  </select>
             </div>
             <div class="form-row">
-                <input type="submit" />
+                <input id="submit" type="submit" />
             </div>
         </form>
     </section>
@@ -116,10 +116,12 @@
     <section>
         <article class="results">
             
-            <h3 class="-fun-facts">These are events in history from <span id="date-search" class="search-date"></span></h3>
+            <h3 class="-fun-facts"><span id="date-search" class="search-date"></span></h3>
             <div id="results-container" class="list-group"></div> 
         </article>
     </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="assets/js/script.js"></script>
 </body>
 </html>
