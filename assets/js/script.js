@@ -23,8 +23,7 @@ var getQuote = function() {
 
     $.get( "https://goquotes-api.herokuapp.com/api/v1/random?count=1", function( data ) {
         $( ".result" ).html( data );
-        displayQuotes(quotes);
-        console.log(data);
+        displayQuote(data);
       });
     };
   
@@ -60,7 +59,7 @@ var displayFacts = function(facts, birthMonth, birthDay) {
     console.log(birthMonth + "/" + birthDay);
 
     for (var i = 0; i < eventsData.length; i++) {
-        var dateStyle = eventsData[i].year 
+        var dateStyle = eventsData[i].year ;
         var regEvent = eventsData[i].description;
         var dateFacts = dateStyle + ": " + regEvent;
         var factDiv = document.createElement("div");
@@ -69,10 +68,6 @@ var displayFacts = function(facts, birthMonth, birthDay) {
         factDiv.appendChild(factTitle);
         factContainer.appendChild(factDiv);
         factTitle.style.cssText = "font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;";
-        
-       
-        
-        
     }
 };
 
@@ -85,6 +80,17 @@ var displayQuote = function(quote) {
     quoteContainer.textContent = "";
     var quoteData = quote.quotes;
     console.log(quoteData);
+
+    for (var i = 0; i < quoteData.length; i++) {
+        var quoteText = quoteData[i].text;
+        var quoteAuthor = quoteData[i].author;
+        var quoteEl = '"' + quoteText + '"' + "    -    " + quoteAuthor;
+        var quoteDiv = document.createElement("div");
+        var divTitle = document.createElement("span");
+        divTitle.textContent = quoteEl;
+        quoteDiv.appendChild(divTitle);
+        quoteContainer.appendChild(quoteDiv);
+    }
     
 
     
@@ -93,4 +99,7 @@ var displayQuote = function(quote) {
 
 
 userForm.addEventListener("submit", submitHandler);
+
 getQuote();
+
+setInterval(function(){ getQuote(); }, 7000);

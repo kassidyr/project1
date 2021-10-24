@@ -88,6 +88,8 @@ h2 {
     font-size: 18px;
 }
 
-.date-class {
-    color: blue;
+.quote-div {
+    background-color: rgb(54, 189, 194);
+    color: white;
+    padding: 10px;
 }
