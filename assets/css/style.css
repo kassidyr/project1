@@ -5,7 +5,7 @@
 }
 
 body {
-    background-image: url(./images/giftbg.jpeg);
+    background-image: url(/images/giftbg.jpeg);
     background-size: cover;
     color:aliceblue;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -92,4 +92,8 @@ h2 {
     background-color: rgb(54, 189, 194);
     color: white;
     padding: 10px;
+}
+
+.submit-btn {
+    margin-top: 20px;
 }

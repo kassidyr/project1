@@ -100,6 +100,7 @@ var displayQuote = function(quote) {
 
 userForm.addEventListener("submit", submitHandler);
 
+
 getQuote();
 
 setInterval(function(){ getQuote(); }, 7000);
