@@ -3,8 +3,8 @@ var monthInput = document.querySelector("#month");
 var dayInput = document.querySelector("#day");
 var factContainer = document.querySelector("#results-container");
 var dateSearch = document.querySelector("#date-search");
-var activityContainer = document.querySelector("#activity-container");
-var activitySpan = document.querySelector("#activity-span");
+var quoteContainer = document.querySelector("#activity-container");
+
 
 
 
@@ -53,17 +53,25 @@ var displayFacts = function(facts, birthMonth, birthDay) {
 
     factContainer.textContent = "";
     dateSearch.textContent = " Below are events in history from " + birthMonth + "/" + birthDay;
+    dateSearch.style.cssText =
+    "font-size: 30px; font-weight: bold; font-style: italic;";
     var eventsData = facts.events;
     console.log(eventsData);
     console.log(birthMonth + "/" + birthDay);
 
     for (var i = 0; i < eventsData.length; i++) {
-        var dateFacts = eventsData[i].year + ": " + eventsData[i].description;
+        var dateStyle = eventsData[i].year 
+        var regEvent = eventsData[i].description;
+        var dateFacts = dateStyle + ": " + regEvent;
         var factDiv = document.createElement("div");
         var factTitle = document.createElement("span");
         factTitle.textContent = dateFacts;
         factDiv.appendChild(factTitle);
         factContainer.appendChild(factDiv);
+        factTitle.style.cssText = "font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;";
+        
+       
+        
         
     }
 };
@@ -74,21 +82,12 @@ var displayQuote = function(quote) {
         return;
     }
 
-    factContainer.textContent = "";
-    dateSearch.textContent = " Below are events in history from " + birthMonth + "/" + birthDay;
-    var eventsData = data.events;
-    console.log(eventsData);
-    console.log(birthMonth + "/" + birthDay);
+    quoteContainer.textContent = "";
+    var quoteData = quote.quotes;
+    console.log(quoteData);
+    
 
-    for (var i = 0; i < eventsData.length; i++) {
-        var dateFacts = eventsData[i].year + ": " + eventsData[i].description;
-        var factDiv = document.createElement("div");
-        var factTitle = document.createElement("span");
-        factTitle.textContent = dateFacts;
-        factDiv.appendChild(factTitle);
-        factContainer.appendChild(factDiv);
-        
-    }
+    
 }
 
 
