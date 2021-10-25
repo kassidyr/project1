@@ -14,44 +14,48 @@
         <h1>Astrology<span class="astrology">API</span></h1>
         <nav>
             <ul>
-                <li>
-                    <a href="#zodiac-signs">Zodiac Signs</a>
+                
+                    <li>
+                    <a href="#zodiac-signs">Thailand's Nature Appreciation Festival</a>
                 </li>
                 <li>
-                    <a href="#what-it-means">What Your Zodiac Sign Means</a>
+                    <a href="#what-it-means">Unique Annual Competition in England</a>
                 </li>
                 <li>
-                    <a href="#sharing-zodiac">Other People May Share Your Sign</a>
+                    <a href="#sharing-zodiac">Controversial Event in Madrid</a>
                 </li>
             </ul>
         </nav>
     </header>
+
+    <div id="activity-container" class="quote-div"></div> 
+
     <section class="content">
-        <article class="zodiac-signs">
+        <article id="zodiac-signs">
             
-            <h2>Zodiac Signs</h2>
+            <h2>Lopburi Monkey Banquet Festival</h2>
             <p>
-                The zodiac is a diagram used by astrologers to represent the positions of the planets and stars.<br>
-                It is divided into twelve sections, each of which has its own name and symbol.<br>
-                The zodiac is used to try to calculate the influence of the planets, especially on someone's life.<br>
+                Once a  year, thousands of macaques get  the meal  of a lifetime at the Phra Prang Sam Yot temple in  Lopburi, Thailand.<br>
+                Almost two tons of fruits and veggies — including watermelon, pineapple, durian, and lettuce — are artfully stacked on banquet tables and hidden under sheets until the monkeys arrive. Then, it’s feasting time.<br>
+                The macaques are thought to bring good luck (and tourists) to the area and the annual banquet is a way for the local people to say thanks.<br>
             </p>
         </article>
-        <article class="what-it-means">
+        <article id="what-it-means">
             
-            <h2>What It Means</h2>
+            <h2>World Toe Wrestling Championships</h2>
             <p>
-                Despite the nuances, the most fundamental principle of astrology centers on the 12 familiar star signs of the zodiac.<br>
-                Over the centuries, each sign has developed its own associations — including myths, animals, and colors — and its own characteristics.<br>
-                Every sign boasts an individual approach to life, complete with dynamic strengths and frustrating weaknesses.<br>
+                Every year in Ashbourne, England, athletes gather to showcase their skills in the lesser-known sport of toe wrestling.<br>
+                Seriously. Competition is fierce in this tournament-style event, which pits one toe against another in an all-out battle.<br>
+                Whoever can pin down the other player’s toe for three seconds is the winner — although there are often three rounds and a changing of feet (right foot plays first, then left, then back to right). Toe-tally amazing.<br>
             </p>
         </article>
-        <article class="sharing-zodiac">
+        <article id="sharing-zodiac">
             
-            <h2>Sharing A Zodiac Sign</h2>
+            <h2>Baby Jumping Festival</h2>
             <p>
-                Zodiac signs can be extremely informative and insightful into someone's best and worst traits, and this can be extra valuable when you're dating someone with the same zodiac sign.<br>
-                Certain signs are super compatible, while others are majorly combustible.<br>
-                That's not to say that the relationship is guaranteed to either succeed or fail, but learning about how sign-on-sign dynamics play out can be very helpful as you navigate a new relationship or friendship.<br>
+                If you want something different, how about a festival where men in devil costumes jump over rows of actual babies? It happens every year (really) in Castrillo de Murcia, a village three hours north of Madrid.<br>
+                While it may sound bizarre, the age-old ritual (it dates back to the early 1600s) is done to supposedly cleanse the babies of sin. Known as “El Colacho,” parents willingly place their newly born children on pillows in a public street to be leaped over by men in masks and bright yellow costumes.<br>
+                According to National Geographic, no injuries have been reported, but the tradition is still a topic of debate among the Catholic Church.<br>
             </p>
         </article>
     </section>
@@ -114,7 +118,7 @@
                  </select>
             </div>
             <div class="form-row">
-                <input type="submit" />
+                <input class="submit-btn" type="submit" />
             </div>
         </form>
     </section>
@@ -122,10 +126,11 @@
     <section>
         <article class="results">
             
-            <h3 class="-fun-facts">These are events in history from <span id="date-search" class="search-date"></span></h3>
+            <h3 class="fun-facts"><span id="date-search" class="search-date"></span></h3>
             <div id="results-container" class="list-group"></div> 
         </article>
     </section>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <script src="assets/js/script.js"></script>
 </body>
 </html>

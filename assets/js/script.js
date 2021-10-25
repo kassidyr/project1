@@ -3,6 +3,8 @@ var monthInput = document.querySelector("#month");
 var dayInput = document.querySelector("#day");
 var factContainer = document.querySelector("#results-container");
 var dateSearch = document.querySelector("#date-search");
+var quoteContainer = document.querySelector("#activity-container");
+
 
 
 
@@ -10,17 +12,21 @@ var getFacts = function(birthMonth, birthDay) {
 
     var funFacts = "https://byabbe.se/on-this-day/" + birthMonth + "/" + birthDay + "/events.json"
 
-    fetch(funFacts).then(function(response) {
-        if (response.ok) {
-            response.json().then(function(data) {
-            displayFacts(data, birthMonth, birthDay)
-                });
-        } else {
-            alert("Not a valid date");
-        }
+    $.get(funFacts, function( data ) {
+        $( ".result" ).html( data );
+        displayFacts(data, birthMonth, birthDay)
+        
     })
-    
-};
+}
+
+var getQuote = function() {
+
+    $.get( "https://goquotes-api.herokuapp.com/api/v1/random?count=1", function( data ) {
+        $( ".result" ).html( data );
+        displayQuote(data);
+      });
+    };
+  
 
 var submitHandler = function(event) {
     event.preventDefault();
@@ -33,33 +39,68 @@ var submitHandler = function(event) {
         monthInput.value = "";
         dayInput.value = "";
     } else {
-        alert("Please enter a date")
+        factContainer.textContent = "Please enter a valid date";
+        return;
     }
 };
 
-var displayFacts = function(data, birthMonth, birthDay) {
-    if (data.events.length === 0) {
+var displayFacts = function(facts, birthMonth, birthDay) {
+    if (facts.events.length === 0) {
         factContainer.textContent = "No facts for this date";
         return;
     }
 
     factContainer.textContent = "";
-    dateSearch.textContent = birthMonth + "/" + birthDay;
-    var eventsData = data.events;
+    dateSearch.textContent = " Below are events in history from " + birthMonth + "/" + birthDay;
+    dateSearch.style.cssText =
+    "font-size: 30px; font-weight: bold; font-style: italic;";
+    var eventsData = facts.events;
     console.log(eventsData);
     console.log(birthMonth + "/" + birthDay);
 
     for (var i = 0; i < eventsData.length; i++) {
-        var dateFacts = eventsData[i].year + ": " + eventsData[i].description;
+        var dateStyle = eventsData[i].year ;
+        var regEvent = eventsData[i].description;
+        var dateFacts = dateStyle + ": " + regEvent;
         var factDiv = document.createElement("div");
         var factTitle = document.createElement("span");
         factTitle.textContent = dateFacts;
         factDiv.appendChild(factTitle);
         factContainer.appendChild(factDiv);
-        
+        factTitle.style.cssText = "font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;";
     }
+};
+
+var displayQuote = function(quote) {
+    if (quote.quotes.length === 0) {
+        factContainer.textContent = "Quote not available";
+        return;
+    }
+
+    quoteContainer.textContent = "";
+    var quoteData = quote.quotes;
+    console.log(quoteData);
+
+    for (var i = 0; i < quoteData.length; i++) {
+        var quoteText = quoteData[i].text;
+        var quoteAuthor = quoteData[i].author;
+        var quoteEl = '"' + quoteText + '"' + "    -    " + quoteAuthor;
+        var quoteDiv = document.createElement("div");
+        var divTitle = document.createElement("span");
+        divTitle.textContent = quoteEl;
+        quoteDiv.appendChild(divTitle);
+        quoteContainer.appendChild(quoteDiv);
+    }
+    
+
+    
 }
 
 
 
 userForm.addEventListener("submit", submitHandler);
+
+
+getQuote();
+
+setInterval(function(){ getQuote(); }, 7000);

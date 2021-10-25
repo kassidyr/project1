@@ -87,3 +87,13 @@ h2 {
 .form-row input {
     font-size: 18px;
 }
+
+.quote-div {
+    background-color: rgb(54, 189, 194);
+    color: white;
+    padding: 10px;
+}
+
+.submit-btn {
+    margin-top: 20px;
+}
