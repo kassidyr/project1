@@ -1,3 +1,4 @@
+// global variables
 var userForm = document.querySelector("#submit-form");
 var monthInput = document.querySelector("#month");
 var dayInput = document.querySelector("#day");
@@ -8,6 +9,8 @@ var quoteContainer = document.querySelector("#activity-container");
 
 
 
+
+// function to fetch events API
 var getFacts = function(birthMonth, birthDay) {
 
     var funFacts = "https://byabbe.se/on-this-day/" + birthMonth + "/" + birthDay + "/events.json"
@@ -19,6 +22,7 @@ var getFacts = function(birthMonth, birthDay) {
     })
 };
 
+// function to fetch quote API
 var getQuote = function() {
 
     $.get( "https://quote-garden.herokuapp.com/api/v3/quotes/random?count-1", function( data ) {
@@ -28,7 +32,7 @@ var getQuote = function() {
       });
     };
   
-
+// this function explains what happens when the submit button is clicked
 var submitHandler = function(event) {
     event.preventDefault();
 
@@ -37,14 +41,17 @@ var submitHandler = function(event) {
 
     if (monthEl, dayEl) {
         getFacts(monthEl, dayEl);
+        saveData(monthEl, dayEl);
         monthInput.value = "";
         dayInput.value = "";
     } else {
         factContainer.textContent = "Please enter a valid date";
         return;
     }
+    
 };
 
+// function that displays facts from API on screen
 var displayFacts = function(facts, birthMonth, birthDay) {
     if (facts.events.length === 0) {
         factContainer.textContent = "No facts for this date";
@@ -72,7 +79,8 @@ var displayFacts = function(facts, birthMonth, birthDay) {
     }
 };
 
-    var displayQuote = function(quote) {
+// function that displays quotes from API beneath header
+var displayQuote = function(quote) {
     if (quote.data.length === 0) {
         factContainer.textContent = "Quote not available";
         return;
@@ -82,6 +90,7 @@ var displayFacts = function(facts, birthMonth, birthDay) {
     var quoteData = quote.data;
     console.log(quoteData);
 
+    // for loop to retrieve quotes from array 
     for (var i = 0; i < quoteData.length; i++) {
         var quoteText = quoteData[0].quoteText;
         var quoteAuthor = quoteData[0].quoteAuthor;
@@ -94,11 +103,29 @@ var displayFacts = function(facts, birthMonth, birthDay) {
     }
 }
 
+    // this function is called at submit handler and saves any input to local storage
+    var saveData = function (day, month){
+        
+        var newData =  day + "/" + month;
+        console.log(newData);
+    
+        if(localStorage.getItem("dates") == null) {
+            localStorage.setItem("dates", '[]');
+        }
+
+        var oldData = JSON.parse(localStorage.getItem("dates"));
+        oldData.push(newData);
+
+        localStorage.setItem("dates", JSON.stringify(oldData));
+    
+    };     
 
 
+// event listener for submit button below input field
 userForm.addEventListener("submit", submitHandler);
 
-
+// function call for fetching quotes from API
 getQuote();
 
-setInterval(function(){ getQuote(); }, 6000);
+// refreshes quote function every 7 seconds for a new quote on screen
+setInterval(function(){ getQuote(); }, 7000);
