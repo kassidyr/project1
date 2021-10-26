@@ -106,7 +106,7 @@ var displayQuote = function(quote) {
     // this function is called at submit handler and saves any input to local storage
     var saveData = function (day, month){
         
-        var newData =  day + "/" + month;
+        var newData =  day + "/" + month + "    ";
         console.log(newData);
     
         if(localStorage.getItem("dates") == null) {
@@ -117,9 +117,16 @@ var displayQuote = function(quote) {
         oldData.push(newData);
 
         localStorage.setItem("dates", JSON.stringify(oldData));
-    
+        
     };     
 
+    // this function shows the saved storage dates on the screen
+    var viewData = function() {
+        if(localStorage.getItem("dates") != null) {
+            factContainer.innerHTML = "Recent searches:  " + ":<br>" + JSON.parse(localStorage.getItem("dates"));
+           
+        }
+    }
 
 // event listener for submit button below input field
 userForm.addEventListener("submit", submitHandler);
@@ -129,3 +136,5 @@ getQuote();
 
 // refreshes quote function every 7 seconds for a new quote on screen
 setInterval(function(){ getQuote(); }, 7000);
+
+viewData();
