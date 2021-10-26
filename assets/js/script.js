@@ -17,12 +17,13 @@ var getFacts = function(birthMonth, birthDay) {
         displayFacts(data, birthMonth, birthDay)
         
     })
-}
+};
 
 var getQuote = function() {
 
-    $.get( "https://goquotes-api.herokuapp.com/api/v1/random?count=1", function( data ) {
+    $.get( "https://quote-garden.herokuapp.com/api/v3/quotes/random?count-1", function( data ) {
         $( ".result" ).html( data );
+        console.log(data);
         displayQuote(data);
       });
     };
@@ -71,19 +72,19 @@ var displayFacts = function(facts, birthMonth, birthDay) {
     }
 };
 
-var displayQuote = function(quote) {
-    if (quote.quotes.length === 0) {
+    var displayQuote = function(quote) {
+    if (quote.data.length === 0) {
         factContainer.textContent = "Quote not available";
         return;
     }
 
     quoteContainer.textContent = "";
-    var quoteData = quote.quotes;
+    var quoteData = quote.data;
     console.log(quoteData);
 
     for (var i = 0; i < quoteData.length; i++) {
-        var quoteText = quoteData[i].text;
-        var quoteAuthor = quoteData[i].author;
+        var quoteText = quoteData[0].quoteText;
+        var quoteAuthor = quoteData[0].quoteAuthor;
         var quoteEl = '"' + quoteText + '"' + "    -    " + quoteAuthor;
         var quoteDiv = document.createElement("div");
         var divTitle = document.createElement("span");
@@ -91,9 +92,6 @@ var displayQuote = function(quote) {
         quoteDiv.appendChild(divTitle);
         quoteContainer.appendChild(quoteDiv);
     }
-    
-
-    
 }
 
 
