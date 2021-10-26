@@ -8,6 +8,8 @@ var quoteContainer = document.querySelector("#activity-container");
 
 
 
+
+
 // function to fetch events API
 var getFacts = function(birthMonth, birthDay) {
 
@@ -39,12 +41,14 @@ var submitHandler = function(event) {
 
     if (monthEl, dayEl) {
         getFacts(monthEl, dayEl);
+        saveData(monthEl, dayEl);
         monthInput.value = "";
         dayInput.value = "";
     } else {
         factContainer.textContent = "Please enter a valid date";
         return;
     }
+    
 };
 
 // function that displays facts from API on screen
@@ -98,6 +102,23 @@ var displayQuote = function(quote) {
         quoteContainer.appendChild(quoteDiv);
     }
 }
+
+    // this function is called at submit handler and saves any input to local storage
+    var saveData = function (day, month){
+        
+        var newData =  day + "/" + month;
+        console.log(newData);
+    
+        if(localStorage.getItem("dates") == null) {
+            localStorage.setItem("dates", '[]');
+        }
+
+        var oldData = JSON.parse(localStorage.getItem("dates"));
+        oldData.push(newData);
+
+        localStorage.setItem("dates", JSON.stringify(oldData));
+    
+    };     
 
 
 // event listener for submit button below input field
