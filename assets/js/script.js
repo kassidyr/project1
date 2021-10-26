@@ -123,7 +123,7 @@ var displayQuote = function(quote) {
     // this function shows the saved storage dates on the screen
     var viewData = function() {
         if(localStorage.getItem("dates") != null) {
-            factContainer.innerHTML = "Recent searches:  " + ":<br>" + JSON.parse(localStorage.getItem("dates"));
+            factContainer.innerHTML = "Recent searches:  " + "<br>" + JSON.parse(localStorage.getItem("dates"));
            
         }
     }
