@@ -101,4 +101,4 @@ userForm.addEventListener("submit", submitHandler);
 
 getQuote();
 
-setInterval(function(){ getQuote(); }, 7000);
+setInterval(function(){ getQuote(); }, 6000);
