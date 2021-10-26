@@ -5,9 +5,10 @@
 }
 
 body {
-    background-image: url(./images/giftbg.jpeg);
-    background-size: cover;
-    color:aliceblue;
+    background-image: url(/assets/css/images/giftbg.jpeg);
+    background-size: auto;
+    background-attachment: fixed;
+    color:darkslategray;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
    
 }
@@ -19,7 +20,7 @@ section, .content  {
 }
 
 header {
-    background-color: black;
+    background-color:black;
     padding: 20px 40px;
 }
 
@@ -62,12 +63,12 @@ a:visited {
 }
 
 a:hover {
-    color: rgb(54, 189, 194);
+    color: peru;
 }
 
 h1 {
     font-size: 40px;
-    color:rgb(54, 189, 194);
+    color:peru;
 }
 
 h1 span {
@@ -76,8 +77,17 @@ h1 span {
 
 h2 {
     font-size: 30px;
-    color: rgb(54, 189, 194);
+    color: black
 }
+
+#results-container {
+    padding: 15px;
+    font-size: 23px;
+    font-weight: lighter;
+    line-height: 2.0;
+    text-align: left;
+}
+
 
 .form-row label {
     font-size: 23px;
@@ -89,7 +99,7 @@ h2 {
 }
 
 .quote-div {
-    background-color: rgb(54, 189, 194);
+    background-color: black;
     color: white;
     padding: 10px;
 }
